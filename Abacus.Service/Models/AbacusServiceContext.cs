@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Abacus.Service.Migrations;
 
 namespace Abacus.Service.Models
 {
@@ -17,6 +18,7 @@ namespace Abacus.Service.Models
     
         public AbacusServiceContext() : base("name=AbacusServiceContext")
         {
+            Database.SetInitializer<AbacusServiceContext>(new DBInitializer());
         }
 
         public System.Data.Entity.DbSet<Abacus.Service.Models.Product> Products { get; set; }
