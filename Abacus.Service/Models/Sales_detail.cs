@@ -12,11 +12,16 @@ namespace Abacus.Service.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Sales_detail
     {
-        public int Id { get; set; }
-        public string ProductName { get; set; }
+        public Sales_detail()
+        {
+            this.Products = new HashSet<Product>();
+        }
     
-        public virtual Sales_detail Sales_detail { get; set; }
+        public int Id { get; set; }
+    
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual Sales_invoice Sales_invoice { get; set; }
     }
 }

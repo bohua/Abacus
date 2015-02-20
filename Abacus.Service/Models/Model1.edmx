@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Products" EntityType="Model1.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sales_invoice" EntityType="Model1.Store.Sales_invoice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sales_detail" EntityType="Model1.Store.Sales_detail" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ProductSales_detail" Association="Model1.Store.ProductSales_detail">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Sales_detail" EntitySet="Sales_detail" />
+    </AssociationSet>
+    <AssociationSet Name="Sales_detailSales_invoice" Association="Model1.Store.Sales_detailSales_invoice">
+      <End Role="Sales_detail" EntitySet="Sales_detail" />
+      <End Role="Sales_invoice" EntitySet="Sales_invoice" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sales_detail_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sales_invoice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sales_Date" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sales_detail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sales_invoice_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ProductSales_detail">
+    <End Role="Product" Type="Model1.Store.Products" Multiplicity="*" />
+    <End Role="Sales_detail" Type="Model1.Store.Sales_detail" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Sales_detail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Sales_detail_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Sales_detailSales_invoice">
+    <End Role="Sales_detail" Type="Model1.Store.Sales_detail" Multiplicity="*" />
+    <End Role="Sales_invoice" Type="Model1.Store.Sales_invoice" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Sales_invoice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sales_detail">
+        <PropertyRef Name="Sales_invoice_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="Model1.Product" />
+          <EntitySet Name="Sales_invoice" EntityType="Model1.Sales_invoice" />
+          <EntitySet Name="Sales_detail" EntityType="Model1.Sales_detail" />
+          <AssociationSet Name="ProductSales_detail" Association="Model1.ProductSales_detail">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Sales_detail" EntitySet="Sales_detail" />
+          </AssociationSet>
+          <AssociationSet Name="Sales_detailSales_invoice" Association="Model1.Sales_detailSales_invoice">
+            <End Role="Sales_detail" EntitySet="Sales_detail" />
+            <End Role="Sales_invoice" EntitySet="Sales_invoice" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" />
+          <NavigationProperty Name="Sales_detail" Relationship="Model1.ProductSales_detail" FromRole="Product" ToRole="Sales_detail" />
+        </EntityType>
+        <EntityType Name="Sales_invoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sales_Date" Type="String" Nullable="false" />
+          <NavigationProperty Name="Sales_detail" Relationship="Model1.Sales_detailSales_invoice" FromRole="Sales_invoice" ToRole="Sales_detail" />
+        </EntityType>
+        <EntityType Name="Sales_detail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Products" Relationship="Model1.ProductSales_detail" FromRole="Sales_detail" ToRole="Product" />
+          <NavigationProperty Name="Sales_invoice" Relationship="Model1.Sales_detailSales_invoice" FromRole="Sales_detail" ToRole="Sales_invoice" />
+        </EntityType>
+        <Association Name="ProductSales_detail">
+          <End Type="Model1.Product" Role="Product" Multiplicity="*" />
+          <End Type="Model1.Sales_detail" Role="Sales_detail" Multiplicity="1" />
+        </Association>
+        <Association Name="Sales_detailSales_invoice">
+          <End Type="Model1.Sales_detail" Role="Sales_detail" Multiplicity="*" />
+          <End Type="Model1.Sales_invoice" Role="Sales_invoice" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales_invoice">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Sales_invoice)">
+        <MappingFragment StoreEntitySet="Sales_invoice">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Sales_Date" ColumnName="Sales_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales_detail">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Sales_detail)">
+        <MappingFragment StoreEntitySet="Sales_detail">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProductSales_detail" TypeName="Model1.ProductSales_detail" StoreEntitySet="Products">
+      <EndProperty Name="Sales_detail">
+        <ScalarProperty Name="Id" ColumnName="Sales_detail_Id" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Sales_detailSales_invoice" TypeName="Model1.Sales_detailSales_invoice" StoreEntitySet="Sales_detail">
+      <EndProperty Name="Sales_invoice">
+        <ScalarProperty Name="Id" ColumnName="Sales_invoice_Id" />
+      </EndProperty>
+      <EndProperty Name="Sales_detail">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
