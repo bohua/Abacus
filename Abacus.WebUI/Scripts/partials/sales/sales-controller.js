@@ -1,4 +1,4 @@
-﻿angular.module('sales', [])
+﻿angular.module('sales', ['$api'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {
@@ -6,8 +6,8 @@
                 controller: 'salesController'
             });
     }])
-	.controller('salesController', ['$scope', '$http', function ($scope, $http) {
-	    $http.get("http://localhost:40001/api/Product")
+	.controller('salesController', ['$scope', '$http', '$api', function ($scope, $http, $api) {
+	    $api.get("/api/Product")
             .success(function (data) {
                 $scope.Products = data;
             });

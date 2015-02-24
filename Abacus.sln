@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abacus.WebUI", "Abacus.WebUI\Abacus.WebUI.csproj", "{C6D97771-3B1F-4227-87E5-284D7DE80B09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abacus.Service", "Abacus.Service\Abacus.Service.csproj", "{76A4B992-A4EF-4F17-903B-29E68AF12FD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abacus.API", "Abacus.Service\Abacus.API.csproj", "{76A4B992-A4EF-4F17-903B-29E68AF12FD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
