@@ -6,6 +6,10 @@
                 controller: 'salesController'
             });
     }])
-	.controller('salesController', ['$scope', function ($scope) {
+	.controller('salesController', ['$scope', '$http', function ($scope, $http) {
+	    $http.get("http://localhost:40001/api/Product")
+            .success(function (data) {
+                $scope.Products = data;
+            });
 
 	}]);

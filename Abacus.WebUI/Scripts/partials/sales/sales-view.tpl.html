@@ -1,3 +1,7 @@
 ﻿<div ng-controller="salesController">
     <h1 class="page-header">销售</h1>
+
+    <div ng-repeat="p in Products">
+        {{p.ProductName}} : {{p.ProductPrice}}
+    </div>
 </div>

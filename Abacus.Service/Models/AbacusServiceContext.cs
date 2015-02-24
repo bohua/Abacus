@@ -22,7 +22,8 @@ namespace Abacus.Service.Models
         }
 
         public System.Data.Entity.DbSet<Abacus.Service.Models.Product> Products { get; set; }
-        public System.Data.Entity.DbSet<Abacus.Service.Models.Contact> Products { get; set; }
-        public System.Data.Entity.DbSet<Abacus.Service.Models.Employee> Products { get; set; }
+        //public System.Data.Entity.DbSet<Abacus.Service.Models.Contact> Contacts { get; set; }
+        //public System.Data.Entity.DbSet<Abacus.Service.Models.Employee> Employees { get; set; }
     }
+
 }
