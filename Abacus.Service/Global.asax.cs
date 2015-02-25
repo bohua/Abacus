@@ -9,7 +9,7 @@ using System.Web.SessionState;
 using System.Web.Http;
 using System.Net.Http.Formatting;
 
-namespace Abacus.Service
+namespace Abacus.API
 {
     public class Global : HttpApplication
     {

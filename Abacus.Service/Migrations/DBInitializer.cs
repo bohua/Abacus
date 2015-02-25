@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using Abacus.Service.Models;
+using Abacus.API.Models;
 
-namespace Abacus.Service.Migrations
+namespace Abacus.API.Migrations
 {
     public class DBInitializer : DropCreateDatabaseAlways<AbacusServiceContext>
     {

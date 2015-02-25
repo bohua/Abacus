@@ -8,12 +8,10 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Abacus.Service.Models;
-using System.Web.Http.Cors;
+using Abacus.API.Models;
 
-namespace Abacus.Service.Controllers
+namespace Abacus.API.Controllers
 {
-    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     public class ProductController : ApiController
     {
         private AbacusServiceContext db = new AbacusServiceContext();

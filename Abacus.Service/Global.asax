@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Abacus.Service.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Abacus.API.Global" Language="C#" %>

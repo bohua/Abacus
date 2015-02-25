@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using Abacus.Service.Migrations;
+using Abacus.API.Migrations;
 
-namespace Abacus.Service.Models
+namespace Abacus.API.Models
 {
     public class AbacusServiceContext : DbContext
     {
@@ -21,9 +21,9 @@ namespace Abacus.Service.Models
             Database.SetInitializer<AbacusServiceContext>(new DBInitializer());
         }
 
-        public System.Data.Entity.DbSet<Abacus.Service.Models.Product> Products { get; set; }
-        //public System.Data.Entity.DbSet<Abacus.Service.Models.Contact> Contacts { get; set; }
-        //public System.Data.Entity.DbSet<Abacus.Service.Models.Employee> Employees { get; set; }
+        public System.Data.Entity.DbSet<Abacus.API.Models.Product> Products { get; set; }
+        //public System.Data.Entity.DbSet<Abacus.API.Models.Contact> Contacts { get; set; }
+        //public System.Data.Entity.DbSet<Abacus.API.Models.Employee> Employees { get; set; }
     }
 
 }
