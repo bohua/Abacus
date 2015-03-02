@@ -5,21 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Abacus</title>
-
     <!-- CSS -->
     <link href="Content/bootstrap.min.css" rel="stylesheet">
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet">
     <link href="Content/dashboard.css" rel="stylesheet" />
     <link href="Content/globalStyle.css" rel="stylesheet" />
-
+    <link href="Content/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-editable.css" rel="stylesheet" />
     <!-- JS LIB -->
     <script src="Scripts/lib/jquery/jquery-2.1.3.js"></script>
     <script src="Scripts/lib/angular/angular.js"></script>
     <script src="Scripts/lib/angular/angular-route.js"></script>
     <script src="Scripts/lib/angular/angular-animate.js"></script>
     <script src="Scripts/lib/angular/angular-resource.js"></script>
-    <script src="Scripts/partials/sales/sales-controller.js"></script>
+    <!-- JS PRODUCT CODE-->
     <script src="Scripts/services/$api.js"></script>
+    <script src="Scripts/partials/sales/sales-controller.js"></script>
+    <script src="Scripts/partials/basic/product/product-controller.js"></script>
     <!-- APP -->
     <script src="Scripts/app.js"></script>
 </head>
@@ -48,13 +50,12 @@
             </div>
         </div>
     </nav>
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#"> 我的主页 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Reports</a></li>
+                    <li><a href="#"> 我的主页 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#/ProductView">产品</a></li>
                     <li><a href="#">Analytics</a></li>
                     <li><a href="#">Export</a></li>
                 </ul>
@@ -72,10 +73,13 @@
                 </ul>
             </div>
             <div id="view-port" ng-view class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
             </div>
         </div>
     </div>
     <script src="Scripts/lib/bootstrap/bootstrap.js"></script>
+    <script src="Scripts/lib/bootstrap/x-editable/bootstrap-editable.min.js"></script>
+    <script src="Scripts/lib/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="Scripts/lib/bootstrap/bootstrap-table/extensions/editable/bootstrap-table-editable.min.js"></script>
+    <script src="Scripts/lib/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 </body>
 </html>
